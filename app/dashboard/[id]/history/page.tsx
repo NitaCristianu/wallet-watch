@@ -6,12 +6,19 @@ import { redirect } from "next/navigation";
 import { ArrowBigRight, ArrowRightCircle } from "lucide-react";
 import { writeClient } from "@/sanity/lib/writeclient";
 import dynamic from "next/dynamic";
+import { Metadata } from "next";
+
+type PageProps = {
+  params: {
+    id: string;
+  };
+};
 
 const ClientComponent = dynamic(() => import("./client"));
 
 export const revalidate = 0;
 
-export default async function Project({ params }: { params: { id: string } }) {
+export default async function Project({ params }: PageProps) {
     const { id: projectId } = await params;
     const project = (await client.fetch(PROJECT_BY_ID, {
         projectId,
