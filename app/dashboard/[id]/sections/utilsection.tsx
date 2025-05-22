@@ -17,7 +17,7 @@ function Utilities({
             </div>
             <div className="flex-col text-gray-100 gap-5 md:gap-2 flex max-sm:text-sm text-left">
                 <motion.a
-                    href={`/dashboard/${project._id}/history`}
+                    href={`/history/${project._id}`}
                     className="bg-black-600 hover:bg-black-900 transition p-2 px-4 rounded-full cursor-pointer text-left"
                 >
                     View history & Manage actions

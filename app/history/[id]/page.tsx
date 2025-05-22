@@ -8,13 +8,11 @@ import { writeClient } from "@/sanity/lib/writeclient";
 import dynamic from "next/dynamic";
 import { Metadata } from "next";
 
-
-
 const ClientComponent = dynamic(() => import("./client"));
 export const revalidate = 0;
 
-export default async function Project(data : any) {
-    const { id: projectId } = data.params;
+export default async function Project({ params }: { params: { id: string } }) {
+    const { id: projectId } = params;
     const project = (await client.fetch(PROJECT_BY_ID, {
         projectId,
     })) as projectType | null;
