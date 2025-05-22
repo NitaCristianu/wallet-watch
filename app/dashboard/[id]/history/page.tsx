@@ -9,13 +9,12 @@ import dynamic from "next/dynamic";
 import { Metadata } from "next";
 
 
-type HistoryProps = { params: { id: string } };
 
 const ClientComponent = dynamic(() => import("./client"));
 export const revalidate = 0;
 
-export default async function Project({ params }: HistoryProps) {
-    const { id: projectId } = params;
+export default async function Project(data : any) {
+    const { id: projectId } = data.params;
     const project = (await client.fetch(PROJECT_BY_ID, {
         projectId,
     })) as projectType | null;
