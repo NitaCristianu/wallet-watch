@@ -15,11 +15,10 @@ type PageProps = {
 };
 
 const ClientComponent = dynamic(() => import("./client"));
-
 export const revalidate = 0;
 
 export default async function Project({ params }: PageProps) {
-    const { id: projectId } = await params;
+    const { id: projectId } = params;
     const project = (await client.fetch(PROJECT_BY_ID, {
         projectId,
     })) as projectType | null;
