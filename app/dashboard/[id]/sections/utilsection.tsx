@@ -5,11 +5,9 @@ import { motion } from "framer-motion";
 function Utilities({
     project,
     actions,
-    currency,
 }: {
     project: projectType;
     actions: actionType[];
-    currency: string;
 }) {
     return (
         <div className=" bg-accent-700 text-gray-100 flex justify-between items-center p-20 gap-10 max-sm:flex-col">

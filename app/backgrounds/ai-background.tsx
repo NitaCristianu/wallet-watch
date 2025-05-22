@@ -2,7 +2,7 @@ import React, { useMemo } from "react";
 import { ShaderGradientCanvas, ShaderGradient } from "@shadergradient/react";
 import * as reactSpring from "@react-spring/three";
 
-export default () => {
+export default function Component() {
     return (
         <ShaderGradientCanvas
             style={{
@@ -20,4 +20,4 @@ export default () => {
             />
         </ShaderGradientCanvas>
     );
-};
+}

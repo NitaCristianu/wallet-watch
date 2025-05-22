@@ -49,7 +49,6 @@ export default async function Project({ params }: { params: { id: string } }) {
                 />
                 <Utilities
                     actions={(project_actions?.actions || []) as actionType[]}
-                    currency={currency}
                     project={project}
                 />
             </section>

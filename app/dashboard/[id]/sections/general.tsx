@@ -32,10 +32,10 @@ function Card2({
     currency: string;
 }) {
     const today = new Date();
-    var monthbuget = calcMonthBudget(actions);
+    let monthbuget = calcMonthBudget(actions);
     if (monthbuget == 0) monthbuget += 0.00001;
-    var dailybudget = (monthbuget / 30) * (project.Dedication || 0.5);
-    var { income: todayIncome, expenses: todayExpenses } = actions.reduce(
+    let dailybudget = (monthbuget / 30) * (project.Dedication || 0.5);
+    let { income: todayIncome, expenses: todayExpenses } = actions.reduce(
         (acc, a) => {
             if (
                 a.type === "transfer" &&
