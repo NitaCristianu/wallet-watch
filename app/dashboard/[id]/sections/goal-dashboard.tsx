@@ -26,7 +26,7 @@ function Card1({
   );
   const goal_data = estimateGoalDate(selectedgoal, actions);
   const formattedETA = goal_data.eta
-    ? format(goal_data.eta, "dd MMM yyyy")
+    ? `${format(goal_data.eta, "dd MMM yyyy")} / ${selectedgoal?.date1 || ""}`
     : "Unreachable";
   const savingformat = goal_data.eta
     ? goal_data.saved < (Math.abs(selectedgoal.ammount!) || 0)
