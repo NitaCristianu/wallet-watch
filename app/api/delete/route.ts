@@ -29,7 +29,6 @@ export async function POST(req: Request) {
         return NextResponse.json({ success: true, results: deletions });
     } catch (err: unknown) {
         const error = err as Error;
-        console.error("OpenAI Error:", error);
         return NextResponse.json(
             { success: false, error: error.message || "Something went wrong" },
             { status: 500 },

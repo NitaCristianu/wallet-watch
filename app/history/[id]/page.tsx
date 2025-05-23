@@ -23,7 +23,10 @@ export default async function Project({ params }: { params: { id: string } }) {
 
     const callback = async (ids: string[], projectId: string) => {
         "use server";
-        if (!projectId) return;
+        if (!projectId) {
+            console.warn("NO PROJECT ID FOUND");
+            return;
+        }
         await writeClient
             .patch(projectId)
             .unset(ids.map((id) => `actions[id == "${id}"]`))

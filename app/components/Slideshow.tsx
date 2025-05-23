@@ -5,12 +5,12 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 
 const cards = [
-  { title: "Performanță", description: "Rezolvă totul", gif: "/gifs/performance.gif" },
-  { title: "Mac", description: "vis.", gif: "/gifs/mac_iphone.gif" },
-  { title: "Compatibilitate", description: "Rulează", gif: "/gifs/compatibility.gif" },
-  { title: "Inteligent", description: "Ușor de iubit.", gif: "/gifs/easy_use.gif" },
-  { title: "Confidențialitate", description: "Ce faci ", gif: "/gifs/privacy.gif" },
-  { title: "Puterea", description: "Totul", gif: "/gifs/ecosystem.gif" },
+  { title: "Commit", description: "Rezolvă totul", gif: "/animationcommit.gif" },
+  { title: "Transfer", description: "vis.", gif: "/animationtransfer.gif" },
+  { title: "Goal", description: "Rulează", gif: "/animationgoal.gif" },
+  { title: "History", description: "Ușor de iubit.", gif: "/history.gif" },
+  { title: "Settings", description: "Ce faci ", gif: "/settings.gif" },
+  { title: "Download as json", description: "Totul", gif: "/json.gif" },
 ];
 
 export default function Slideshow() {
