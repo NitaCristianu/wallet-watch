@@ -249,9 +249,7 @@ function AIClient({
                 >
                    
                 </motion.div> */}
-                <motion.div
-                    className="absolute left-1/2 top-1/4 -translate-1/2 h-full flex flex-col justify-center text-gray-100 items-center "
-                >
+                <motion.div className="absolute left-1/2 top-1/4 -translate-1/2 h-full flex flex-col justify-center text-gray-100 items-center ">
                     <MaterialSymbolsAccountCircle className="fill-current w-20 h-20 md:w-50 md:h-50 mb-3" />
                     <h1 className="text-lg font-light">
                         Great to see you, {project.user?.name}.
@@ -299,11 +297,10 @@ function AIClient({
                 <div className="absolute w-full max-sm:px-10 md:w-3/5 lg:3/5 bottom-10 backdrop-blur-2xl left-1/2 -translate-x-1/2 ">
                     <div className=" -top-4 -translate-y-full text-text-primary  flex gap-4 left-4 w-full pr-20 max-md:text-xs relative max-sm:hidden">
                         {...[
-                            "Make a plan",
-                            "What if I save more aggresevely",
-                            "Can I afford a new house in next 10 years?",
-                            "Advice",
-                        ].map((suggestion, i) => (
+                            "Summarize my current state",
+                            "Smarter money tips?",
+                            "Give me advice on saving",
+                    ].map((suggestion, i) => (
                             <motion.button
                                 whileHover={{
                                     background: "#ddd",

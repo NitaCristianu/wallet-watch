@@ -2,6 +2,7 @@ import { auth, signOut } from "@/auth";
 import { projectType } from "@/constants/types";
 import { client } from "@/sanity/lib/client";
 import { PROJECTS_BY_USER } from "@/sanity/lib/queries";
+import { Link2, Link2Icon } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
@@ -47,7 +48,7 @@ export default async function Dashboard() {
                     </h1>
                     <Link
                         href={"/creation"}
-                        className="bg-black-700 text-gray-100 p-2 rounded-full mb-3 px-4 cursor-pointer hover:bg-black-900 transition"
+                        className="bg-black-700 hover:bg-black-300 text-gray-100 p-2 rounded-full mb-3 px-4 cursor-pointer transition"
                     >
                         Create new project
                     </Link>
@@ -55,11 +56,12 @@ export default async function Dashboard() {
                 {...projects.map((project, i) => (
                     <div
                         key={project._id}
-                        className={`hover:text-gray-800 transition ease-out duration-150 cursor-pointer w-full h-min py-4 ${i != 0 ? "border-t-2" : ""} border-gray-900/20 text-left`}
+                        className={`hover:text-gray-800 ease-out duration-150 cursor-pointer w-full h-min py-4 card to-black/2! my-4 p-5 flex justify-between bg-gray-100/40! border-gray-900/20 text-left hover:bg-gray-300/50! transition`}
                     >
-                        <Link href={`/dashboard/${project._id}`}>
+                        <Link href={`/dashboard/${project._id}`} className="w-full">
                             {project.title}
                         </Link>
+                        <Link2Icon />
                     </div>
                 ))}
             </div>
