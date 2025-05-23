@@ -17,15 +17,15 @@ async function ProjectCreation() {
     return (
         <section>
             <Step1
-                callback={async (title: string, currency: string) => {
+                projects={projects}
+                callback={async (title: string, currency: string, actions : any[]) => {
                     "use server";
                     if (!session.user) return;
-                    console.log(title);
                     const project = await writeClient.create({
                         _type: "project",
                         title,
                         currency,
-                        actions: [],
+                        actions: actions,
                         user: {
                             _type: "reference",
                             _ref: session.user.id, 

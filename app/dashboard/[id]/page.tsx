@@ -11,7 +11,7 @@ import Utilities from "./sections/utilsection";
 export const revalidate = 0;
 
 export default async function Project({ params }: { params: { id: string } }) {
-    const { id: projectId } = params;
+    const { id: projectId } = await params;
     const project = (await client.fetch(PROJECT_BY_ID, {
         projectId,
     })) as projectType | null;

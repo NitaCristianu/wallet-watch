@@ -238,6 +238,7 @@ function AIClient({
                 style={{ width: size, height: size, borderRadius: radius }}
                 className="bg-black-900 absolute left-1/2 -translate-x-1/2 overflow-hidden from-accent-700/10 bg-radial "
             >
+                {/* 
                 <motion.div
                     className="fixed h-[120vh]"
                     style={{ opacity: 0 }}
@@ -246,16 +247,10 @@ function AIClient({
                         transition: { delay: 1, duration: 0.5 },
                     }}
                 >
-                    {/* {bg} */}
-                </motion.div>
+                   
+                </motion.div> */}
                 <motion.div
-                    whileInView={{
-                        opacity: 1,
-                        scale: "100%",
-                        transition: { delay: 0.1, duration: 1 },
-                    }}
-                    className="absolute left-1/2 top-1/4 -translate-1/2 h-full flex flex-col justify-center text-gray-100 items-center opacity-0"
-                    initial={{ scale: "60%" }}
+                    className="absolute left-1/2 top-1/4 -translate-1/2 h-full flex flex-col justify-center text-gray-100 items-center "
                 >
                     <MaterialSymbolsAccountCircle className="fill-current w-20 h-20 md:w-50 md:h-50 mb-3" />
                     <h1 className="text-lg font-light">
@@ -264,7 +259,7 @@ function AIClient({
                     {/* red square now pushes everything below it */}
                 </motion.div>
                 <div
-                    className="w-3/6 left-1/2 -translate-x-1/2 absolute top-1/4 min-h-[35vh] rounded-lg translate-y-50 overflow-y-auto"
+                    className="w-5/6 md:4/6 lg:w-3/6 left-1/2 -translate-x-1/2 absolute top-1/4 min-h-[35vh] rounded-lg translate-y-50 overflow-y-auto"
                     id="converstation-div"
                 >
                     <div className="relative w-full h-[35vh] flex flex-col overflow-y-auto px-5 scrollbar-min gap-5">
@@ -301,8 +296,8 @@ function AIClient({
                         </AnimatePresence>
                     </div>
                 </div>
-                <div className="absolute w-3/5 bottom-10 backdrop-blur-2xl   left-1/2 -translate-x-1/2">
-                    <div className=" -top-4 -translate-y-full text-text-primary  flex gap-4 left-4 w-full pr-20 relative">
+                <div className="absolute w-full max-sm:px-10 md:w-3/5 lg:3/5 bottom-10 backdrop-blur-2xl left-1/2 -translate-x-1/2 ">
+                    <div className=" -top-4 -translate-y-full text-text-primary  flex gap-4 left-4 w-full pr-20 max-md:text-xs relative max-sm:hidden">
                         {...[
                             "Make a plan",
                             "What if I save more aggresevely",
@@ -319,7 +314,7 @@ function AIClient({
                                         ease: easeInOut,
                                     },
                                 }}
-                                className="min-w-fit text-white/40 bg-black-600 cursor-pointer grow rounded-full py-px px-5 font-light "
+                                className="min-w-fit text-white/40 bg-black-600 cursor-pointer grow rounded-full py-px px-5 font-light"
                                 key={i}
                                 type="submit"
                                 onClick={() => send(suggestion)}

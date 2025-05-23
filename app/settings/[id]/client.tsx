@@ -53,7 +53,7 @@ function CurencyInput({
                         value={currency}
                         type="text"
                         className="h-full w-fit outline-0 p-3 text-4xl bg-black-400/5"
-                        placeholder="CURRENCY"
+                        placeholder="EUR"
                         onChange={(event: ChangeEvent<HTMLInputElement>) => {
                             setCurrency(event.target.value.toUpperCase());
                         }}
@@ -63,6 +63,7 @@ function CurencyInput({
             <motion.p
                 className="w-full text-center mt-2 font-light text-lg text-shadow-lg text-shadow text-state-error"
                 style={{ textShadow: "0 0 4px rgb(255,0,0,.4)" }}
+                initial={{height : 0, opacity : 1}}
                 animate={{
                     opacity: showError ? 1 : 0,
                     height: showError ? "auto" : 0,
@@ -77,8 +78,7 @@ function CurencyInput({
 
 // -1 is auto
 function DailyBudget({ dailybudget }: { dailybudget: number }) {
-    const [enabled, setEnabled] = useState(dailybudget != -1);
-    console.log(enabled);
+    const [enabled, setEnabled] = useState(dailybudget != -1 && dailybudget > 0);
     return (
         <AnimatePresence mode="popLayout">
             <div className="w-min mb-10 mt-4">
@@ -129,7 +129,7 @@ function TitleInput({ title }: { title: string }) {
         <div className="w-min mb-10">
             <div className="w-full text-2xl text-text-secondary flex gap-5 items-center">
                 Title
-                <div className="rounded-xl overflow-hidden p-2 bg-gray-200 ">
+                <div className="rounded-xl overflow-hidden p-2 card bg-gray-200! ">
                     <input
                         name="title"
                         placeholder="Name your project"
@@ -195,9 +195,9 @@ function ClientSettingsPage({
             action={action}
             className="space-y-4 mb-10 flex flex-col items-center bg-white/10 p-5 rounded-2xl"
         >
-            <div className="fixed -z-1 left-0 top-0 opacity-20 hue-rotate-90">
+            {/* <div className="fixed -z-1 left-0 top-0 opacity-20 hue-rotate-90">
                 <SettingsBackground />
-            </div>
+            </div> */}
             <TitleInput title={project.title!} />
             <CurencyInput defaultCurrency={project.currency!} />
             <GoalDedication dedication={project.Dedication!} />

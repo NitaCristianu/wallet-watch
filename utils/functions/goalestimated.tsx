@@ -9,7 +9,8 @@ import { actionType } from "@/constants/types";
 
 export function estimateGoalDate(goal: actionType, actions: actionType[]) {
   const today = new Date();
-  const goalAmount = goal.ammount ?? 0;
+  const goalAmount = Math.abs(goal.ammount ?? 0);
+  const goalsign = Math.sign(goal.ammount!);
 
   let saved = 0;
   let dailyRate = 0;
@@ -19,7 +20,7 @@ export function estimateGoalDate(goal: actionType, actions: actionType[]) {
     const start = parseISO(action.date1);
 
     if (action.type === "transfer") {
-      if (!isAfter(start, today)) saved += action.ammount;
+      if (!isAfter(start, today)) saved += action.ammount * goalsign;
     }
 
     if (action.type === "commit") {
@@ -30,7 +31,7 @@ export function estimateGoalDate(goal: actionType, actions: actionType[]) {
       if (!isBefore(end, start)) {
         const days = differenceInDays(isAfter(end, today) ? today : end, start);
         const count = Math.floor(days / freq) + 1;
-        saved += count * action.ammount;
+        saved += count * action.ammount * goalsign;
       }
 
       // ⬇️ Add to daily inflow if active today

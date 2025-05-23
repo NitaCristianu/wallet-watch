@@ -29,7 +29,7 @@ function Card1({
     ? format(goal_data.eta, "dd MMM yyyy")
     : "Unreachable";
   const savingformat = goal_data.eta
-    ? goal_data.saved < (selectedgoal.ammount || 0)
+    ? goal_data.saved < (Math.abs(selectedgoal.ammount!) || 0)
       ? `Saved: ${goal_data.saved} / ${selectedgoal.ammount} ${currency}`
       : "Congrats! You've achieved it!"
     : "No saving yet.";
@@ -136,7 +136,7 @@ function Card4({
   const now = new Date();
 
   return (
-    <div className="card to-black/50 p-5 pt-9 w-100 max-w-full flex h-full flex-col overflow-y-auto justify-center bg-purple-400! relative overflow-hidden ">
+    <div className="card to-black/50 p-5 pt-9 md:w-70 max-sm:w-100 lg:w-100 max-sm:text-lg md:text-sm lg:text-lg  max-w-full flex h-full flex-col overflow-y-auto justify-center bg-purple-400! relative overflow-hidden ">
       <CalendarArrowUp className="absolute w-100 h-100 left-10 text-purple-500/50!" />
       <div className="z-2 w-full backdrop-blur-md pt-3 rounded-xl overflow-hidden">
         <h1 className="text-3xl text-center text-gray-100 font-semibold mb-1 ">
@@ -144,24 +144,24 @@ function Card4({
         </h1>
         <div className="grid grid-cols-3  shadow-2xl  py-10 px-3 rounded-xl">
           <div className="flex flex-col gap-px text-gray-100">
-            <h1 className="text-center font-semibold text-lg">Category</h1>
+            <h1 className="text-center font-semibold ">Category</h1>
             {...followups.map((value, i) => (
               <div
                 key={i}
-                className="text-left font-[300] text-lg flex w-full justify-evenly text-gray-200"
+                className="text-left font-[300]  flex w-full justify-evenly text-gray-200"
               >
                 <p>{value.src.title}</p>
               </div>
             ))}
           </div>
           <div className="flex flex-col gap-px">
-            <h1 className="text-center font-semibold text-lg text-gray-100">
+            <h1 className="text-center font-semibold  text-gray-100">
               Amount
             </h1>
             {...followups.map((value, i) => (
               <div
                 key={i}
-                className="text-center font-[300] text-lg flex w-full justify-evenly text-gray-200"
+                className="text-center font-[300]  flex w-full justify-evenly text-gray-200"
               >
                 <p>
                   {value.amount} {currency}
@@ -170,13 +170,13 @@ function Card4({
             ))}
           </div>
           <div className="flex flex-col gap-px">
-            <h1 className="text-center font-semibold text-lg text-gray-100">
+            <h1 className="text-center font-semibold  text-gray-100">
               In X days
             </h1>
             {...followups.map((value, i) => (
               <div
                 key={i}
-                className="text-center font-[300] text-lg flex w-full justify-evenly text-gray-200"
+                className="text-center font-[300] flex w-full justify-evenly text-gray-200"
               >
                 <p>{-differenceInCalendarDays(now, value.date)}</p>
               </div>
@@ -199,13 +199,13 @@ function Card3({
 
   return (
     <div className="card to-black/10 p-5 h-full my-auto flex flex-col md:w-1/4">
-      <h1 className="text-2xl text-text-primary pt-4 text-center text-wrap font-semibold mb-6">
+      <h1 className="md:text-xl lg:text-2xl text-text-primary pt-4 text-center text-wrap font-semibold mb-6">
         Monthly Profit
       </h1>
 
       <div className="grow grid place-items-center">
         <h1
-          className="text-6xl font-bold text-center"
+          className="md:text-4xl lg:text-6xl font-bold text-center"
           style={{
             color: `var(${profit >= 0 ? "--color-state-success" : "--color-state-error"})`,
           }}

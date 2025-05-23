@@ -49,7 +49,7 @@ function Step3({ setstep }: { setstep: Dispatch<SetStateAction<number>> }) {
 
     return <motion.div exit={{ opacity: 0 }} animate={{ opacity: 100, transition: { delay: 0.1, duration: .4 } }} initial={{ opacity: 0, transition: { duration: .6, delay: .2 } }} className="text-text-primary">
         <AnimatedCheckmark />
-        <motion.h1 className="text-5xl text-center p-10 text-nowrap">You&aposre all set!</motion.h1>
+        <motion.h1 className="text-5xl text-center p-10 text-nowrap">You{"'"}re all set!</motion.h1>
     </motion.div>
 };
 export default Step3;

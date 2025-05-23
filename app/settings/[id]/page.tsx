@@ -14,7 +14,7 @@ import { redirect } from "next/navigation";
 import ClientSettingsPage from "./client";
 
 export default async function Project({ params }: { params: { id: string } }) {
-    const { id: projectId } = params;
+    const { id: projectId } = await params;
     const project = (await client.fetch(PROJECT_BY_ID, {
         projectId,
     })) as projectType | null;

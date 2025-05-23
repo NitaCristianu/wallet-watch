@@ -221,11 +221,11 @@ export type PROJECTS_BY_USERResult = Array<{
     } | null;
 }>;
 // Variable: PROJECT_BY_ID
-// Query: *[_type == "project" && _id == $projectId][0]{    _id,    title,    dedication,    currency,    dailybudget,    "user": user->{      _id,      name,      email    }  }
+// Query: *[_type == "project" && _id == $projectId][0]{    _id,    title,    Dedication,    currency,    dailybudget,    "user": user->{      _id,      name,      email    }  }
 export type PROJECT_BY_IDResult = {
     _id: string;
     title: string | null;
-    dedication: null;
+    Dedication: number | null;
     currency: string | null;
     dailybudget: number | null;
     user: {
@@ -260,7 +260,7 @@ declare module "@sanity/client" {
     interface SanityQueries {
         '*[_type == "user" && email == $email][0]{\n    _id,\n    name,\n    email,\n    image,\n}': USER_BY_EMAILResult;
         '\n*[_type == "project" && user._ref == $userId]{\n  _id,\n  title,\n  "user": user->{\n    _id,\n    name,\n    email\n  }\n}': PROJECTS_BY_USERResult;
-        '\n  *[_type == "project" && _id == $projectId][0]{\n    _id,\n    title,\n    dedication,\n    currency,\n    dailybudget,\n    "user": user->{\n      _id,\n      name,\n      email\n    }\n  }\n': PROJECT_BY_IDResult;
+        '\n  *[_type == "project" && _id == $projectId][0]{\n    _id,\n    title,\n    Dedication,\n    currency,\n    dailybudget,\n    "user": user->{\n      _id,\n      name,\n      email\n    }\n  }\n': PROJECT_BY_IDResult;
         '\n  *[_type == "project" && _id == $projectId][0]{\n    actions[]{\n      _key,\n      _type,\n      title,\n      description,\n      currency,\n      ammount,\n      frequency,\n      other,\n      color,\n      type,\n      date1,\n      date2,\n      id,\n    }\n  }\n': ACTIONS_BY_PROJECT_IDResult;
     }
 }

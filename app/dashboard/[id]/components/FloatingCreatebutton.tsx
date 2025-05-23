@@ -21,7 +21,7 @@ const StaggeredDropDown = (params: {
       <motion.div animate={open ? "open" : "closed"} className="relative">
         <button
           onClick={() => setOpen((pv) => !pv)}
-          className="flex items-center gap-2 max-sm:px-2 md:px-4 py-2  rounded-full md:rounded-lg text-indigo-50 bg-black-600 hover:bg-black-500 transition-colors"
+          className="flex items-center gap-2 max-sm:px-2 md:px-4 py-2  rounded-full md:rounded-lg text-indigo-50 bg-black-600 hover:bg-black-500 transition-colors cursor-pointer"
         >
           <span>
             <span className="font-medium max-sm:hidden">Create action</span>
@@ -75,7 +75,7 @@ const Option = ({
   );
 };
 
-export default function FloatingCreateButton() {
+export default function FloatingCreateButton({classname}:{classname?: string}) {
   const Options: {
     text: action_type;
     Icon: any;
@@ -89,7 +89,7 @@ export default function FloatingCreateButton() {
   ];
 
   return (
-    <div className="fixed right-0 overflow-hidden mr-5">
+    <div className={classname || `fixed right-0 overflow-hidden mr-5`}>
       <StaggeredDropDown options={Options} />
     </div>
   );

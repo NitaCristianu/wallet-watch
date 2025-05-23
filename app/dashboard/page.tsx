@@ -13,8 +13,6 @@ export default async function Dashboard() {
         userId: session.user.id,
     });
 
-    console.log(projects);
-    
     return (
         <section className="h-screen w-full flex flex-col justify-center items-center gap-10">
             <div id="log in" className="flex flex-col">
@@ -25,7 +23,7 @@ export default async function Dashboard() {
                         alt="profile"
                     />
                     <h1 className="text-3xl font-semibold">
-                        {session?.user?.name}
+                        Welcome, {session?.user?.name}
                     </h1>
                 </div>
                 <form
@@ -42,19 +40,19 @@ export default async function Dashboard() {
                     </button>
                 </form>
             </div>
-            <div className="w-100 mt-5 rounded-xl text-gray-600 text-left p-4">
+            <div className="min-w-100 w-[40vw] mt-5 rounded-xl text-gray-600 text-left p-4">
                 <div className="flex justify-between items-center">
                     <h1 className="text-xl font-bold text-gray-700 mb-3">
                         PROJECTS
                     </h1>
                     <Link
                         href={"/creation"}
-                        className="bg-black-700 text-gray-100 p-2 rounded-full mb-3 cursor-pointer hover:bg-black-900 transition"
+                        className="bg-black-700 text-gray-100 p-2 rounded-full mb-3 px-4 cursor-pointer hover:bg-black-900 transition"
                     >
                         Create new project
                     </Link>
                 </div>
-                {projects.map((project, i) => (
+                {...projects.map((project, i) => (
                     <div
                         key={project._id}
                         className={`hover:text-gray-800 transition ease-out duration-150 cursor-pointer w-full h-min py-4 ${i != 0 ? "border-t-2" : ""} border-gray-900/20 text-left`}

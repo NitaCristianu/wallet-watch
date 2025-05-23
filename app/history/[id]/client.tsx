@@ -30,6 +30,10 @@ function ClientHistory({
                 <button
                     className="cursor-pointer bg-black-800 rounded-full w-fit mx-auto text-gray-100 py-1 px-5 flex gap-2 items-center justify-center text-lg hover:bg-red-800 duration-300 transition"
                     type="submit"
+                    disabled={selected.length > 0}
+                    style={{
+                        background : selected.length > 0 ? "#111" : "#ddd",
+                    }}
                 >
                     <p>DELETE SELECTED</p>{" "}
                     <Trash className="stroke-current scale-80" />{" "}
