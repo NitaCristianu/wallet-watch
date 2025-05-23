@@ -1,8 +1,15 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import Slideshow from "../components/Slideshow";
+import { redirect } from "next/navigation";
+import { auth } from "@/auth";
 
-const Tutorial = () => {
+const Tutorial = async () => {
+
+    const session = await auth();
+    if (session) {
+        redirect("/dashboard");
+    }
     return (
         <div>
             <Navbar />
