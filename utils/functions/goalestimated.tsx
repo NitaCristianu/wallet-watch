@@ -62,7 +62,7 @@ export function estimateGoalDate(goal: actionType, actions: actionType[]) {
   }
 
   const daysNeeded = Math.ceil((goalAmount - saved) / dailyRate);
-  const eta = addDays(today, daysNeeded*(1/2));
+  const eta = addDays(today, daysNeeded*2);
 
   return {
     goal,
