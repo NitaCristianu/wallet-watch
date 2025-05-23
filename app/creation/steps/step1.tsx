@@ -196,6 +196,7 @@ function Step1({
     const [currency, setCurrency] = useState("EUR");
     const [showModal, setShowModal] = useState<action_type | null>(null);
     const [actions, setActions] = useState<any[]>([]);
+    const [created, setCreated] = useState(false);
 
     useEffect(() => {
         if (title.trim().length == 0 && title.length > 0) {
@@ -223,7 +224,6 @@ function Step1({
             animate={{ opacity: 1 }}
             initial={{ opacity: 0, transition: { duration: 1 } }}
             transition={{ duration: 0.6 }}
-            
             className="flex flex-col justify-center"
         >
             <Link
@@ -276,7 +276,7 @@ function Step1({
                             <div className="w-full h-full relative overflow-x-hidden ">
                                 <FloatingModal
                                     visible={showModal}
-                                    classname={`w-[40vw]! left-[0]! overlfow-x-hidden! text-lg! h-[100vh]! ${!showModal ?"hidden" : "visible"}`}
+                                    classname={`w-[40vw]! left-[0]! overlfow-x-hidden! text-lg! h-[100vh]! ${!showModal ? "hidden" : "visible"}`}
                                     servercallback={(data: any, type) => {
                                         const minDays = 1;
                                         const maxDays = 365;
@@ -309,7 +309,10 @@ function Step1({
                                                 : { date1: data.date }),
                                         };
 
-                                        setActions(prev=>[...prev, item_data]);
+                                        setActions((prev) => [
+                                            ...prev,
+                                            item_data,
+                                        ]);
                                     }}
                                 />
                             </div>
@@ -320,7 +323,9 @@ function Step1({
                 <motion.button
                     animate={{
                         background:
-                            title.length <= 0 || showError ? "#ddd" : "#111",
+                            title.length <= 0 || showError || created
+                                ? "#ddd"
+                                : "#111",
                     }}
                     whileHover={{ width: "190px" }}
                     disabled={title.length <= 0 || showError}
@@ -329,7 +334,8 @@ function Step1({
                     onClick={() => {
                         if (nextstep == false) {
                             setNextstep(true);
-                        } else {
+                        } else if (!created) {
+                            setCreated(true);
                             callback(title, currency, actions);
                         }
                     }}
